@@ -10,8 +10,8 @@ Ball::Ball(SDL_Surface* ballSurface, const double x, const double y) : ballVeloc
     } else {
         this->ballSurface = ballSurface;
 
-        ballRect.x = x;
-        ballRect.y = y;
+        ballRect.x = static_cast<int>(x);
+        ballRect.y = static_cast<int>(y);
         ballRect.w = BALL_WIDTH;
         ballRect.h = BALL_HEIGHT;
 
@@ -40,8 +40,8 @@ void Ball::show() {
 }
 
 void Ball::move(SDL_Rect* player1, SDL_Rect* player2) {
-    ballRect.x += getXSpeed();
-    ballRect.y += getYSpeed();
+    ballRect.x += static_cast<int>(getXSpeed());
+    ballRect.y += static_cast<int>(getYSpeed());
 
     // Y axis collision detection
     if(ballRect.y <= 0) {
@@ -118,7 +118,7 @@ void Ball::increaseVelocity() {
     LogInfo << "New ball velocity components: (" << getXSpeed() << ", " << getYSpeed() << ")\n";
 }
 
-bool Ball::collision(SDL_Rect* rectangle) {
+bool Ball::collision(SDL_Rect* rectangle) const {
     if(ballRect.y >= rectangle->y + rectangle->h) {
         return false;
     }

@@ -19,7 +19,7 @@ class Random {
      * @param a The minimum number possible.
      * @param b The maximum number possible.
      */
-    static int getInt(int a, int b);
+    [[maybe_unused]] static int getInt(int a, int b);
 
     private:
     /**

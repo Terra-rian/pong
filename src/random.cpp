@@ -9,7 +9,7 @@ double Random::getReal(double a, double b) {
     return distribution(generator);
 }
 
-int Random::getInt(int a, int b) {
+[[maybe_unused]] int Random::getInt(int a, int b) {
     std::mt19937 generator(randomDevice());
     std::uniform_int_distribution<> distribution(a, b);
 

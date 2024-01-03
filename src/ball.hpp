@@ -14,7 +14,7 @@ class Ball {
      * @param x The ball's x position.
      * @param y The ball's y position.
      */
-    Ball(SDL_Surface* ballSurface, const double x, const double y);
+    Ball(SDL_Surface* ballSurface, double x, double y);
 
     /**
      * @brief Destructor for a `Ball` object.
@@ -34,12 +34,12 @@ class Ball {
     /**
      * @brief Returns the velocity vector of the ball.
      */
-    Vector2D getVelocity() const;
+    [[nodiscard]] Vector2D getVelocity() const;
 
     /**
      * @brief Returns the last velocity vector of the ball.
      */
-    Vector2D getLastVelocity() const;
+    [[nodiscard]] Vector2D getLastVelocity() const;
 
     /**
      * @brief Sets the last velocity vector of the ball.
@@ -51,13 +51,13 @@ class Ball {
      * @brief Gets the ball's velocity's x component.
      * @return The ball's horizontal speed.
      */
-    double getXSpeed() const;
+    [[nodiscard]] double getXSpeed() const;
 
     /**
      * @brief Gets the ball's velocity's y component.
      * @return The ball's vertical speed.
      */
-    double getYSpeed() const;
+    [[nodiscard]] double getYSpeed() const;
 
     /**
      * @brief Returns a double between `a` and `b`.
@@ -65,7 +65,7 @@ class Ball {
      * @param b The largest value possible.
      * @return A random double between 2 doubles.
      */
-    double getRandomPosition(double a, double b);
+    static double getRandomPosition(double a, double b);
 
     /**
      * @brief Sets the ball's velocity's x component.
@@ -96,7 +96,7 @@ class Ball {
      * @param rectangle The rectangle to test against.
      * @return True if a collision has occurred, false otherwise.
      */
-    bool collision(SDL_Rect* rectangle);
+    bool collision(SDL_Rect* rectangle) const;
 
     /**
      * @brief The width of the ball in pixels.
@@ -121,7 +121,7 @@ class Ball {
     /**
      * @brief The surface that holds the ball's sprite.
      */
-    SDL_Surface* ballSurface;
+    [[maybe_unused]] SDL_Surface* ballSurface;
 
     /**
      * @brief The texture that holds the ball's image.
@@ -131,5 +131,5 @@ class Ball {
     /**
      * @brief Represents the ball's position on the game screen.
      */
-    SDL_Rect ballRect;
+    SDL_Rect ballRect{};
 };

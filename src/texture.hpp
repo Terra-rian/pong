@@ -25,7 +25,7 @@ class Texture {
      * @param x The x coordinate of the texture.
      * @param y The y coordinate of the texture.
      */
-    void loadTexture(SDL_Surface* imageSurface, const int width, const int height, const int x, const int y);
+    void loadTexture(SDL_Surface* imageSurface, int width, int height, int x, int y);
 
     /**
      * @brief Blits the texture onto the renderer.
@@ -41,5 +41,5 @@ class Texture {
     /**
      * @brief Represents the bounds of an image.
      */
-    SDL_Rect textureRect;
+    SDL_Rect textureRect{};
 };

@@ -39,7 +39,7 @@ class Vector2D {
     /**
      * @brief Multiplies the components of this vector by a scalar.
     */
-    Vector2D operator*(const double scalar);
+    Vector2D operator*(double scalar) const;
 
     /**
      * @brief Increments a vector by another vector.
@@ -50,46 +50,46 @@ class Vector2D {
     /**
      * @brief Returns the x component of this vector.
      */
-    double getX() const;
+    [[nodiscard]] double getX() const;
 
     /**
      * @brief Returns the y component of this vector.
      */
-    double getY() const;
+    [[nodiscard]] double getY() const;
 
     /**
      * @brief Sets the x component of this vector.
-     * @param x The x value to set.
+     * @param X The x value to set.
      */
-    void setX(double x);
+    void setX(double X);
 
     /**
      * @brief Sets the y component of this vector.
-     * @param y The y value to set.
+     * @param Y The y value to set.
      */
-    void setY(double y);
+    void setY(double Y);
 
     /**
      * @brief Returns the magnitude of this vector.
      */
-    double magnitude();
+    [[nodiscard]] double magnitude() const;
 
     /**
      * @brief Returns the magnitude of this vector, squared.
      */
-    double magnitudeSquared();
+    [[maybe_unused]] [[nodiscard]] double magnitudeSquared() const;
 
     /**
      * @brief Returns the dot product between two vectors.
      * @param other The vector to multiply.
      */
-    double dot(const Vector2D& other) const;
+    [[maybe_unused]] [[nodiscard]] double dot(const Vector2D& other) const;
 
     /**
      * @brief Returns the cross product between two vectors.
      * @param other The vector to multiply.
      */
-    Vector2D cross(const Vector2D& other) const;
+    [[maybe_unused]] [[nodiscard]] Vector2D cross(const Vector2D& other) const;
 
     private:
     /**

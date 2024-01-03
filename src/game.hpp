@@ -74,17 +74,17 @@ class Game {
     /**
      * @brief Displays a window with information about the game.
      */
-    void showInfo();
+    static void showInfo();
 
     /**
      * @brief Displays a window showing that player 1 won.
      */
-    void player1Won();
+    static void player1Won();
 
     /**
      * @brief DIsplays a window showing that player 2 won.
      */
-    void player2Won();
+    static void player2Won();
 
     /**
      * @brief Are we in debug mode?
@@ -140,12 +140,12 @@ class Game {
     /**
      * @brief The current event received by SDL2 from the OS.
      */
-    SDL_Event event;
+    SDL_Event event{};
 
     /**
      * @brief The number of milliseconds since SDL initialization.
      */
-    std::uint32_t currentTime;
+    std::uint32_t currentTime{};
 
     /**
      * @brief The actual FPS after accounting for delays.

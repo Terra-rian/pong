@@ -1,7 +1,7 @@
 #include "font.hpp"
 #include "window.hpp"
 
-Font::Font(SDL_Rect &fontRect) : FontManager() {
+Font::Font(SDL_Rect& fontRect) : FontManager() {
     this->fontRect = fontRect;
 
     fontSurface = nullptr;
@@ -65,7 +65,7 @@ void Font::renderTextSolid(const std::string &text) {
     SDL_DestroyTexture(fontTexture);
 }
 
-void Font::renderTextShaded(const std::string& text) {
+[[maybe_unused]] void Font::renderTextShaded(const std::string& text) {
     if(font == nullptr) {
         LogWarning << "No font loaded.\n";
         return;

@@ -7,19 +7,19 @@ Vector2D& Vector2D::operator()() {
 }
 
 Vector2D Vector2D::operator+(const Vector2D& rhs) const {
-    return Vector2D(x + rhs.x, y + rhs.y);
+    return {x + rhs.x, y + rhs.y};
 }
 
 Vector2D Vector2D::operator-() {
-    return Vector2D(-x, -y);
+    return {-x, -y};
 }
 
 Vector2D Vector2D::operator-(const Vector2D& rhs) const {
-    return Vector2D(x - rhs.x, y - rhs.y);
+    return {x - rhs.x, y - rhs.y};
 }
 
-Vector2D Vector2D::operator*(const double scalar) {
-    return Vector2D(x * scalar, y * scalar);
+Vector2D Vector2D::operator*(const double scalar) const {
+    return {x * scalar, y * scalar};
 }
 
 Vector2D& Vector2D::operator+=(const Vector2D& rhs) {
@@ -29,11 +29,11 @@ Vector2D& Vector2D::operator+=(const Vector2D& rhs) {
     return *this;
 }
 
-double Vector2D::magnitude() {
+double Vector2D::magnitude() const {
     return sqrt((pow(x, 2) + pow(y, 2)));
 }
 
-double Vector2D::magnitudeSquared() {
+[[maybe_unused]] double Vector2D::magnitudeSquared() const {
     return pow(magnitude(), 2);
 }
 
@@ -45,18 +45,18 @@ double Vector2D::getY() const {
     return y;
 }
 
-void Vector2D::setX(const double x) {
-    this->x = x;
+void Vector2D::setX(const double X) {
+    this->x = X;
 }
 
-void Vector2D::setY(const double y) {
-    this->y = y;
+void Vector2D::setY(const double Y) {
+    this->y = Y;
 }
 
-double Vector2D::dot(const Vector2D& other) const {
+[[maybe_unused]] double Vector2D::dot(const Vector2D& other) const {
     return (x * other.x) + (y * other.y);
 }
 
-Vector2D Vector2D::cross(const Vector2D& other) const {
-    return Vector2D(x * other.x, y * other.y);
+[[maybe_unused]] Vector2D Vector2D::cross(const Vector2D& other) const {
+    return {x * other.x, y * other.y};
 }

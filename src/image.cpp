@@ -3,20 +3,16 @@
 Image::Image() {
     imageOpened = false;
 
-    if(!imageOpened) {
-        if((IMG_Init(IMG_INIT_PNG) & IMG_INIT_PNG) != IMG_INIT_PNG) {
-            LogFatal << "SDL_image couldn't be initialized. Error:" << IMG_GetError() << "\n";
-            imageOpened = false;
-        } else {
-            LogInfo << "SDL_image initialized successfully.\n";
-            imageOpened = true;
-        }
+    if((IMG_Init(IMG_INIT_PNG) & IMG_INIT_PNG) != IMG_INIT_PNG) {
+        LogFatal << "SDL_image couldn't be initialized. Error:" << IMG_GetError() << "\n";
+        imageOpened = false;
     } else {
         LogInfo << "SDL_image initialized successfully.\n";
+        imageOpened = true;
     }
 }
 
-bool Image::isImageOpen() const {
+[[maybe_unused]] bool Image::isImageOpen() const {
     return imageOpened;
 }
 
@@ -32,7 +28,7 @@ SDL_Surface* Image::loadBMP(const std::string& path, int colorKeyState, std::arr
     return image;
 }
 
-SDL_Surface* Image::loadBMP(const std::string &path, std::array<std::uint32_t, 3>& colorKey) {
+[[maybe_unused]] SDL_Surface* Image::loadBMP(const std::string &path, std::array<std::uint32_t, 3>& colorKey) {
     return loadBMP(path, SDL_TRUE, colorKey);
 }
 
@@ -41,9 +37,9 @@ SDL_Surface* Image::loadBMP(const std::string &path) {
     return loadBMP(path, SDL_FALSE, colorKey);
 }
 
-SDL_Surface* Image::loadPNG(const std::string &path) {
+SDL_Surface* Image::loadPNG(const std::string &path) const {
     SDL_Surface* image = nullptr;
-    SDL_RWops* rwop = nullptr;
+    SDL_RWops* rwop;
 
     if(imageOpened) {
         rwop = SDL_RWFromFile(path.c_str(), "rb");

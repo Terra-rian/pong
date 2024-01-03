@@ -15,7 +15,7 @@ class Window {
      * @param flags The flags setted to the game window.
      */
     Window(const std::string& title, int width, int height, std::uint32_t flags);
-    Window() = delete; // Make the default constructor unusable
+    Window() = delete;
 
     /**
      * @brief Destructor for a `Window` object.

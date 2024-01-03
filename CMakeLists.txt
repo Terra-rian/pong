@@ -19,8 +19,11 @@ file(GLOB_RECURSE SOURCE_FILES CONFIGURE_DEPENDS src/*.cpp src/*.hpp)
 
 add_executable(pong ${SOURCE_FILES})
 
+# ENABLE IF DEBUGGING
 # target_compile_options(pong PUBLIC "-fsanitize=address,undefined")
 # target_link_options(pong PUBLIC "-fsanitize=address,undefined")
+
+target_compile_options(pong PUBLIC "-Wall" "-Wextra")
 
 target_include_directories(pong PUBLIC "/opt/homebrew/include")
 target_include_directories(pong PUBLIC ${CMAKE_SOURCE_DIR}/external)

@@ -12,8 +12,8 @@ Paddle::Paddle(SDL_Surface* paddleImage, const double x, const double y) {
         ySpeed = Y_SPEED;
 
         paddleSurface = paddleImage;
-        paddleRect.x = x;
-        paddleRect.y = y;
+        paddleRect.x = static_cast<int>(x);
+        paddleRect.y = static_cast<int>(y);
         paddleRect.w = PADDLE_WIDTH;
         paddleRect.h = PADDLE_HEIGHT;
 
@@ -42,14 +42,14 @@ void Paddle::show() {
 }
 
 void Paddle::moveUp() {
-    if( paddleRect.y > 0) {
-        paddleRect.y -= Y_SPEED;
+    if(paddleRect.y > 0) {
+        paddleRect.y -= static_cast<int>(Y_SPEED);
     }
 }
 
 void Paddle::moveDown() {
     if(paddleRect.y + paddleRect.h < Window::WINDOW_HEIGHT) {
-        paddleRect.y += Y_SPEED;
+        paddleRect.y += static_cast<int>(Y_SPEED);
     }
 }
 
@@ -57,7 +57,7 @@ SDL_Rect* Paddle::getRect() {
     return &paddleRect;
 }
 
-double Paddle::getSpeed() const {
+[[maybe_unused]] double Paddle::getSpeed() const {
     return ySpeed;
 }
 
@@ -65,7 +65,7 @@ void Paddle::setSpeed(const double speed) {
     ySpeed = speed;
 }
 
-int Paddle::getScore() {
+int Paddle::getScore() const {
     return score;
 }
 

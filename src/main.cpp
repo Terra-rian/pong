@@ -2,9 +2,9 @@
 
 int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[]) {
     Game game;
-    game.showInfo();
+    Game::showInfo();
 
-    while(game.isRunning()) {
+    while(Game::isRunning()) {
         game.update();
         game.handleEvents();
         game.render();

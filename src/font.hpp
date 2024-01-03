@@ -20,7 +20,7 @@ class Font : protected FontManager {
     /**
      * @brief Constructs a new `Font` object.
      */
-    Font(SDL_Rect& fontRect);
+    explicit Font(SDL_Rect& fontRect);
 
     /**
      * @brief Initializes a font to be used.
@@ -39,7 +39,7 @@ class Font : protected FontManager {
      * @brief Renders shaded text on the game window.
      * @param text The text to render.
      */
-    void renderTextShaded(const std::string& text);
+    [[maybe_unused]] void renderTextShaded(const std::string& text);
 
     /**
      * @brief Sets the color of the font to be rendered (RGBA).
@@ -54,7 +54,7 @@ class Font : protected FontManager {
     /**
      * @brief The position of the font to be rendered.
      */
-    SDL_Rect fontRect;
+    SDL_Rect fontRect{};
 
     /**
      * @brief The surface that contains the rendered font.

@@ -15,29 +15,29 @@ class Image {
     /**
      * @brief Checks if `SDL_image` was initialized successfully.
      */
-    bool isImageOpen() const;
+    [[maybe_unused]] [[nodiscard]] bool isImageOpen() const;
 
     /**
      * @brief Internal method, handles loading .bmp files.
      */
-    SDL_Surface* loadBMP(const std::string& path, int colorKeyState, std::array<std::uint32_t, 3>& colorKey);
+    static SDL_Surface* loadBMP(const std::string& path, int colorKeyState, std::array<std::uint32_t, 3>& colorKey);
 
     /**
      * @brief Internal method, handles loading .bmp files.
      */
-    SDL_Surface* loadBMP(const std::string& path, std::array<std::uint32_t, 3>& colorKey);
+    [[maybe_unused]] static SDL_Surface* loadBMP(const std::string& path, std::array<std::uint32_t, 3>& colorKey);
 
     /**
      * @brief Loads a .bmp file and returns an `SDL_Surface` containing data about the image.
      * @param path The path to the image, relative to the executable.
      */
-    SDL_Surface* loadBMP(const std::string& path);
+    static SDL_Surface* loadBMP(const std::string& path);
 
     /**
      * @brief Loads a .png file and returns an `SDL_Surface` containing data about the image.
      * @param path The path to the image, relative to the executable.
      */
-    SDL_Surface* loadPNG(const std::string& path);
+    [[nodiscard]] SDL_Surface* loadPNG(const std::string& path) const;
 
     private:
     /**

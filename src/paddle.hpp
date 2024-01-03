@@ -13,7 +13,7 @@ class Paddle {
      * @param x The x coordinate of the paddle.
      * @param y The y coordinate of the paddle.
      */
-    Paddle(SDL_Surface *paddleImage, const double x, const double y);
+    Paddle(SDL_Surface *paddleImage, double x, double y);
 
     /**
      * @brief Destructor for a `Paddle` object.
@@ -43,18 +43,18 @@ class Paddle {
     /**
      * @brief Returns the paddle's speed.
      */
-    double getSpeed() const;
+    [[maybe_unused]] [[nodiscard]] double getSpeed() const;
 
     /**
      * @brief Sets the paddle's speed.
      * @param speed The speed of the paddle to set.
      */
-    void setSpeed(const double speed);
+    void setSpeed(double speed);
 
     /**
      * @brief Returns the score of a player.
      */
-    int getScore();
+    [[nodiscard]] int getScore() const;
 
     /**
      * @brief Adds a point to the player who scored.
@@ -84,7 +84,7 @@ class Paddle {
     /**
      * @brief The current state of keys that are pressed/released.
      */
-    const std::uint8_t* keyState;
+    const std::uint8_t* keyState{};
 
     private:
     /**
@@ -120,7 +120,7 @@ class Paddle {
     /**
      * @brief The `SDL_Surface` of the image representing a paddle.
      */
-    SDL_Surface* paddleSurface;
+    [[maybe_unused]] SDL_Surface* paddleSurface;
 
     /**
      * @brief The texture of the image representing a paddle.
@@ -130,5 +130,5 @@ class Paddle {
     /**
      * @brief Represents the bounds of the paddle.
      */
-    SDL_Rect paddleRect;
+    SDL_Rect paddleRect{};
 };

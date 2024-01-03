@@ -2,7 +2,7 @@
 
 FontManager::FontManager() {
     font = nullptr;
-    isTTFOpened = false;
+    isTTFOpened = initializeTTF();
 
     fontColor.r = 0xff;
     fontColor.b = 0xff;
@@ -13,8 +13,6 @@ FontManager::FontManager() {
     shadedFontColor.b = 0x00;
     shadedFontColor.g = 0x00;
     shadedFontColor.a = 1;
-
-    isTTFOpened = initializeTTF();
 }
 
 FontManager::~FontManager() {
@@ -23,15 +21,11 @@ FontManager::~FontManager() {
 }
 
 bool FontManager::initializeTTF() {
-    if(isTTFOpened) {
-        return true;
+    if(TTF_Init() != 0) {
+        LogFatal << "SDL_ttf could not be initialized: " << TTF_GetError() << "\n";
+        return false;
     } else {
-        if(TTF_Init() != 0) {
-            LogFatal << "SDL_ttf could not be initialized: " << TTF_GetError() << "\n";
-            return false;
-        } else {
-            LogInfo << "SDL_ttf initialized successfully.\n";
-            return true;
-        }
+        LogInfo << "SDL_ttf initialized successfully.\n";
+        return true;
     }
 }

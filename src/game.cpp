@@ -15,11 +15,11 @@ Game::Game() {
     isGameRunning = true;
     inDebugMode = false;
 
-    std::string leftpaddle("resources/icons/leftpaddle.bmp");
-    std::string rightpaddle("resources/icons/rightpaddle.bmp");
-    std::string ball("resources/icons/ball.png");
-    std::string pauseBackground("resources/icons/pause-background.png");
-    std::string pauseMessage("resources/icons/pause.png");
+    std::string leftPaddlePath("resources/icons/leftpaddle.bmp");
+    std::string rightPaddlePath("resources/icons/rightpaddle.bmp");
+    std::string ballPath("resources/icons/ball.png");
+    std::string pauseBackgroundPath("resources/icons/pause-background.png");
+    std::string pauseMessagePath("resources/icons/pause.png");
 
     window = std::make_shared<Window>("Pong: The Definitive Edition", Window::WINDOW_WIDTH, Window::WINDOW_HEIGHT, SDL_WINDOW_SHOWN);
     image = std::make_shared<Image>();
@@ -53,16 +53,16 @@ Game::Game() {
     debugInfo.debugFont->openFont(Font::FontType::NORMAL, 300);
     debugInfo.debugFont->setFontColor(200, 200, 200, 255);
 
-    player1 = std::make_shared<Paddle>(image->loadBMP(leftpaddle), 1, Window::WINDOW_HEIGHT / 2 - 25);
-    player2 = std::make_shared<Paddle>(image->loadBMP(rightpaddle), Window::WINDOW_WIDTH - 11, Window::WINDOW_HEIGHT / 2 - 25);
+    player1 = std::make_shared<Paddle>(image->loadBMP(leftPaddlePath), 1, Window::WINDOW_HEIGHT / 2 - 25);
+    player2 = std::make_shared<Paddle>(image->loadBMP(rightPaddlePath), Window::WINDOW_WIDTH - 11, Window::WINDOW_HEIGHT / 2 - 25);
 
-    this->ball = std::make_shared<Ball>(image->loadPNG(ball), Window::WINDOW_WIDTH / 2, Window::WINDOW_HEIGHT / 2);
+    this->ball = std::make_shared<Ball>(image->loadPNG(ballPath), Window::WINDOW_WIDTH / 2, Window::WINDOW_HEIGHT / 2);
 
     pauseBackgroundTexture = std::make_shared<Texture>();
     pauseMessageTexture = std::make_shared<Texture>();
 
-    pauseBackgroundTexture->loadTexture(image->loadPNG(pauseBackground), Window::WINDOW_WIDTH, Window::WINDOW_HEIGHT, 0, 0);
-    pauseMessageTexture->loadTexture(image->loadPNG(pauseMessage), 188, 34, Window::WINDOW_WIDTH / 2 - 94, Window::WINDOW_HEIGHT / 2 - 17);
+    pauseBackgroundTexture->loadTexture(image->loadPNG(pauseBackgroundPath), Window::WINDOW_WIDTH, Window::WINDOW_HEIGHT, 0, 0);
+    pauseMessageTexture->loadTexture(image->loadPNG(pauseMessagePath), 188, 34, Window::WINDOW_WIDTH / 2 - 94, Window::WINDOW_HEIGHT / 2 - 17);
 
     audio->playMusic(Audio::Music::TRACK_1, 0);
     audio->playMusic(Audio::Music::TRACK_2, 0);
@@ -124,7 +124,7 @@ void Game::handleEvents() {
                         break;
 
                     case SDLK_f: {
-                        int fullscreenFlag = SDL_GetWindowFlags(Window::getWindow());
+                        uint32_t fullscreenFlag = SDL_GetWindowFlags(Window::getWindow());
 
                         if((fullscreenFlag & SDL_WINDOW_FULLSCREEN) == SDL_WINDOW_FULLSCREEN) {
                             SDL_SetWindowFullscreen(Window::getWindow(), 0);

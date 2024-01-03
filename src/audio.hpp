@@ -38,7 +38,7 @@ class Audio {
     /**
      * @brief Checks if an audio file is currently open.
      */
-    bool isAudioOpen() const;
+    [[nodiscard]] bool isAudioOpen() const;
 
     /**
      * @brief Plays a music track.
@@ -56,7 +56,7 @@ class Audio {
     /**
      * @brief Lists all system audio drivers that are available.
      */
-    void printAudioDrivers();
+    static void printAudioDrivers();
 
     private:
     /**
@@ -67,12 +67,12 @@ class Audio {
     /**
      * @brief An array of game effects.
      */
-    std::array<Mix_Chunk*, 3> effects;
+    std::array<Mix_Chunk*, 3> effects{};
 
     /**
      * @brief An array of game music tracks.
      */
-    std::array<Mix_Music*, 3> tracks;
+    std::array<Mix_Music*, 3> tracks{};
 
     /**
      * @brief An array of game effect paths.

@@ -26,12 +26,12 @@ class FontManager {
     /**
      * @brief The color of the font.
      */
-    SDL_Color fontColor;
+    SDL_Color fontColor{};
 
     /**
      * @brief The shaded color of the font.
      */
-    SDL_Color shadedFontColor;
+    SDL_Color shadedFontColor{};
 
     /**
      * @brief Is a font currently in use?
@@ -42,5 +42,5 @@ class FontManager {
     /**
      * @brief Initializes `SDL_ttf`.
      */
-    bool initializeTTF();
+    [[nodiscard]] static bool initializeTTF() ;
 };
